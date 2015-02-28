@@ -1,5 +1,5 @@
 // &&status='Open' or 'Closed' => this will effect density of ending -- if Open there will almost inevitably be high density of notes sustaingin til the end of the piece
-var str = "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$where=created_date>='2014-02-01'&&complaint_type='noise'&&incident_zip='11218'&$limit=5&$select=incident_zip, street_name, closed_date, created_date, unique_key, x_coordinate_state_plane, y_coordinate_state_plane, longitude, latitude, descriptor, status";
+var str = "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$where=created_date>='2014-02-01'&&complaint_type='noise'&&incident_zip='11218'&$limit=50&$select=incident_zip, street_name, closed_date, created_date, unique_key, x_coordinate_state_plane, y_coordinate_state_plane, longitude, latitude, descriptor, status";
 
 // for now... a whole bunch of globals!
 
@@ -10,14 +10,14 @@ var latRange = [];
 var longRange = [];
 var xCoordRange = [];
 var yCoordRange = [];
-var compositionLength = 10; // seconds
+var compositionLength = 20; // seconds
 
 var enviro = flock.init();
 enviro.play();
 // enviro.stop();
 
-var context = window.AudioContext ? new AudioContext() : new webkitAudioContext()
-  , clock = new WAAClock(context);
+var context = window.AudioContext ? new AudioContext() : new webkitAudioContext();
+var clock = new WAAClock(context);
 
 clock.start();
 
