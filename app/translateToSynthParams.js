@@ -31,11 +31,20 @@ function setWave(models){
 		"Noise, Barking Dog (NR5)" : "flock.ugen.pinkNoise" , 
 		"Noise: Construction Equipment (NC1)" : "flock.ugen.tri", 
 		"Noise: Jack Hammering (NC2)" : "flock.ugen.square", 
-		"Noise:  lawn care equipment (NCL)" : "flock.ugen.whiteNoise"
+		"Noise:  lawn care equipment (NCL)" : "flock.ugen.whiteNoise",
+		"Noise: Private Carting Noise (NQ1)" : "flock.ugen.whiteNoise",
+		"Noise, Ice Cream Truck (NR4)" : "flock.ugen.square",
+		"Noise, Other Animals (NR6)" : "flock.ugen.sinOsc"
 	};
 
-	_.forEach(models, function(m){		
-		m.synthDef.ugen = wavDictionary[m.descriptor];
+	_.forEach(models, function(m){
+		if (!wavDictionary[m.descriptor]) {
+			m.synthDef.ugen = "flock.ugen.sinOsc";
+			console.log('add me to the wavDictionary');
+			console.log(m.descriptor);
+		} else {
+			m.synthDef.ugen = wavDictionary[m.descriptor];
+		}
 	});
 };
 

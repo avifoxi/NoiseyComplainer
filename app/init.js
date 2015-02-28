@@ -27,6 +27,9 @@ $('button').click(function(e){
 	var density = $('#density').val();
 	compositionLength = parseInt($('#length').val());
 
-	makeQueryString(density, zip, start_date, end_date );
+	var queryString = makeQueryString(density, zip);
+	console.log(queryString);
 
+	getNsetModels(queryString);
+	// prepareNotes(models);
 });
